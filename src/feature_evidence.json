@@ -1,0 +1,107 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-create-a-google-inspired-search-homepage-ui-with-a-centered-logo-a-prominent-search-input-and-primary-secondary-action-buttons-e-g-search-and-i-m-feeling-lucky-using-only-original-branding-no-google-trademarks-fonts-or-logos",
+      "featureTitle": "Create a Google-inspired search homepage UI with a centered logo, a prominent search input, and primary/secondary action buttons (e.g., “Search” and “I’m Feeling Lucky”), using only original branding (no Google trademarks, fonts, or logos).",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/SearchForm.tsx",
+        "frontend/src/main.tsx",
+        "frontend/src/pages/SearchHomePage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-a-search-results-page-that-displays-a-list-of-results-for-the-entered-query-including-a-result-title-a-url-host-line-and-a-short-snippet-per-result-results-may-be-generated-from-a-local-mock-dataset-and-filtered-client-side",
+      "featureTitle": "Implement a search results page that displays a list of results for the entered query, including a result title, a URL/host line, and a short snippet per result; results may be generated from a local mock dataset and filtered client-side.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/ResultsList.tsx",
+        "frontend/src/mock/searchDataset.ts",
+        "frontend/src/pages/SearchResultsPage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-basic-search-ux-behaviors-pressing-enter-triggers-search-the-search-box-supports-clearing-editing-and-the-query-is-reflected-in-the-url-so-results-can-be-refreshed-bookmarked",
+      "featureTitle": "Add basic search UX behaviors: pressing Enter triggers search, the search box supports clearing/editing, and the query is reflected in the URL so results can be refreshed/bookmarked.",
+      "files": [
+        "frontend/src/components/SearchForm.tsx",
+        "frontend/src/pages/SearchHomePage.tsx",
+        "frontend/src/pages/SearchResultsPage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-apply-a-coherent-visual-theme-across-the-app-colors-typography-spacing-button-styles-with-a-clean-minimalist-aesthetic-that-evokes-a-modern-search-engine-while-remaining-clearly-non-identical-to-google-s-visual-design-avoid-the-exact-google-color-palette-and-styling",
+      "featureTitle": "Apply a coherent visual theme across the app (colors, typography, spacing, button styles) with a clean minimalist aesthetic that evokes a modern search engine while remaining clearly non-identical to Google’s visual design (avoid the exact Google color palette and styling).",
+      "files": [
+        "frontend/index.css",
+        "frontend/src/pages/SearchHomePage.tsx",
+        "frontend/src/pages/SearchResultsPage.tsx",
+        "frontend/tailwind.config.js"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-4"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-the-generated-static-images-to-the-frontend-as-assets-under-frontend-public-assets-generated-and-render-them-in-the-ui-logo-on-the-homepage-and-optionally-a-small-logo-in-the-results-header",
+      "featureTitle": "Add the generated static images to the frontend as assets under frontend/public/assets/generated and render them in the UI (logo on the homepage and optionally a small logo in the results header).",
+      "files": [
+        "frontend/src/pages/SearchHomePage.tsx",
+        "frontend/src/pages/SearchResultsPage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

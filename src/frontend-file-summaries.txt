@@ -1,0 +1,13 @@
+{
+  "frontend/src/App.tsx": "Main application component that sets up TanStack Router with routes for the homepage (/) and search results (/search).",
+  "frontend/src/pages/SearchHomePage.tsx": "Landing page component featuring a centered logo, prominent search input, and two action buttons (Search and I'm Feeling Lucky) with footer attribution.",
+  "frontend/src/pages/SearchResultsPage.tsx": "Search results page that displays filtered results from mock data, includes a sticky header with compact search form and small logo, and handles URL query parameters.",
+  "frontend/src/components/SearchForm.tsx": "Reusable search form component with search icon, clear button, and optional action buttons; supports both full and compact display modes.",
+  "frontend/src/components/ResultsList.tsx": "Presentational component that renders search results with title, URL/host, and snippet, plus empty state messages when no results are found.",
+  "frontend/src/mock/searchDataset.ts": "Mock dataset containing 20 searchable items with titles, URLs, snippets, and keywords for client-side filtering.",
+  "frontend/src/hooks/useQueries.ts": "Placeholder file for React Query hooks to interact with backend (currently empty as backend has no methods).",
+  "frontend/index.css": "Global styles with custom OKLCH color system featuring a blue-purple primary color (hue 250) for a modern, search-centric aesthetic distinct from Google's palette.",
+  "frontend/tailwind.config.js": "Tailwind configuration with Inter font family, custom shadows, and extended theme tokens for consistent styling across the application.",
+  "frontend/src/main.tsx": "Application entry point that sets up React Query and Internet Identity providers, with CSS import path corrected to ./index.css.",
+  "frontend/src/index.css": "Global styles with custom OKLCH color system featuring a blue-purple primary color (hue 250) for a modern, search-centric aesthetic distinct from Google's palette."
+}

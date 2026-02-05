@@ -1,0 +1,20 @@
+{
+  "backend/main.mo": "Empty Motoko actor with no defined methods.",
+  "feature_evidence.json": "Feature evidence report mapping features to related files, components, and test IDs.",
+  "frontend-file-summaries.txt": "Text file containing prewritten summaries of all frontend source files.",
+  "frontend/index.css": "Empty stylesheet placeholder.",
+  "frontend/index.html": "Basic HTML shell that mounts the React app and loads main.tsx.",
+  "frontend/src/App.tsx": "Sets up TanStack Router with home and search routes and renders the router.",
+  "frontend/src/components/ResultsList.tsx": "Displays search results or empty states with title, host, and snippet formatting.",
+  "frontend/src/components/SearchForm.tsx": "Search form with input, clear button, optional action buttons, and compact mode support.",
+  "frontend/src/hooks/useActor.ts": "Creates and manages a backend actor based on Internet Identity, with query invalidation on identity change.",
+  "frontend/src/hooks/useInternetIdentity.ts": "Provides Internet Identity auth context with login, logout, and identity persistence logic.",
+  "frontend/src/hooks/useQueries.ts": "Placeholder file for future backend‑related React Query hooks.",
+  "frontend/src/index.css": "Tailwind base/styles plus OKLCH theme variables for light and dark UI modes.",
+  "frontend/src/main.tsx": "React entry point initializing QueryClient, Internet Identity provider, and rendering App.",
+  "frontend/src/mock/searchDataset.ts": "Defines the SearchResult interface and exports a mock array of search result objects used for client-side filtering.",
+  "frontend/src/pages/SearchHomePage.tsx": "Implements the search homepage UI with a logo, search form, and navigation handlers for standard and lucky searches.",
+  "frontend/src/pages/SearchResultsPage.tsx": "Renders the search results page, reads the query from the URL, filters the mock dataset, and displays results with a header search bar.",
+  "frontend/tailwind.config.js": "Configures TailwindCSS with custom colors, fonts, container settings, animations, and plugin integrations.",
+  "project_state.json": "Stores project metadata including features, requirements, generated assets, and the current build state."
+}

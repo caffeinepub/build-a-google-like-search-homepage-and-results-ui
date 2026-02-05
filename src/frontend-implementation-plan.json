@@ -1,0 +1,157 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Original search homepage and client-side results UI",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Create an original, Google-inspired (but non-identical) search landing page with centered logo, prominent search input, and primary/secondary actions.",
+      "acceptanceCriteria": [
+        "The landing page renders a centered logo, search input, and two action buttons.",
+        "All branding is original (no use of the Google wordmark, multicolor logo, or proprietary fonts).",
+        "Layout is responsive for mobile and desktop."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "create",
+          "description": "Create the app shell with route wiring so the landing page is the default route (e.g., \"/\")."
+        },
+        {
+          "path": "frontend/src/pages/SearchHomePage.tsx",
+          "operation": "create",
+          "description": "Implement the search landing page layout: centered generated logo, prominent search input, and two action buttons with original brand styling and English-only text."
+        },
+        {
+          "path": "frontend/src/components/SearchForm.tsx",
+          "operation": "create",
+          "description": "Create a reusable search form component used on the homepage (and later on results) with a prominent input and primary/secondary actions. Use shadcn-ui components (e.g., Button/Input) to keep styling consistent; verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/main.tsx",
+          "operation": "modify",
+          "description": "Wire the new App component entry (and ensure the global CSS import resolves correctly) so the homepage renders as the default view."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Implement a results page that lists mock-search matches with title, host/URL line, and snippet plus an English empty state.",
+      "acceptanceCriteria": [
+        "Submitting a query navigates to a results view and shows a results list.",
+        "Each result shows a title, a URL/host line, and a snippet.",
+        "If no results match, an empty-state message is shown in English."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/SearchResultsPage.tsx",
+          "operation": "create",
+          "description": "Create a results view that reads the query from the URL, filters a local mock dataset client-side, and renders a results list with title, URL/host line, and snippet plus an English empty state."
+        },
+        {
+          "path": "frontend/src/mock/searchDataset.ts",
+          "operation": "create",
+          "description": "Add a local mock dataset of searchable items (title, url/host, snippet, keywords) used by the results page filtering logic; no external search APIs."
+        },
+        {
+          "path": "frontend/src/components/ResultsList.tsx",
+          "operation": "create",
+          "description": "Create a presentational component to render the results list and empty-state message. Use shadcn-ui primitives where appropriate (e.g., Card/Separator/Typography classes) without modifying immutable ui files; verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Register and wire navigation to the results route (e.g., \"/search\") so the results page is reachable after submitting a query."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Add core search UX: Enter-to-search, editable/clearable query, and query persisted in the URL for refresh/bookmark.",
+      "acceptanceCriteria": [
+        "Pressing Enter in the input triggers navigation to results.",
+        "The query appears in the URL (e.g., as a query string) and is restored on reload.",
+        "Users can edit the query on the results page and re-run the search."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/SearchForm.tsx",
+          "operation": "modify",
+          "description": "Implement form semantics so Enter submits; add clear/edit support (e.g., a clear control) and emit navigation-friendly submit events. Use shadcn-ui Button/Input if used; verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/SearchHomePage.tsx",
+          "operation": "modify",
+          "description": "On submit, navigate to the results route while encoding the query in the URL (query string) so it can be bookmarked/refreshed."
+        },
+        {
+          "path": "frontend/src/pages/SearchResultsPage.tsx",
+          "operation": "modify",
+          "description": "Read the query from the URL on mount/load, populate the search box from it, allow editing, and update the URL when re-running the search (keeping refresh/bookmark behavior)."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Apply a cohesive minimalist visual theme across the app that feels search-centric but is clearly not a Google replica; ensure English-only UI text.",
+      "acceptanceCriteria": [
+        "All pages share consistent typography and component styling.",
+        "The theme is minimalist and search-centric but not an exact replica of Google’s design.",
+        "All user-facing text is in English."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/index.css",
+          "operation": "modify",
+          "description": "Adjust global CSS variables (colors, radius, base text rendering) to create an original minimalist theme that avoids the exact Google palette while remaining clean and search-centric."
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Refine Tailwind theme extensions (e.g., font stack, spacing/radius conventions) to ensure consistent typography and component styling across pages without mimicking Google’s proprietary look."
+        },
+        {
+          "path": "frontend/src/pages/SearchHomePage.tsx",
+          "operation": "modify",
+          "description": "Apply consistent page-level spacing, typography, and button/input styling using the shared theme; keep all visible text in English and ensure the design is not an exact Google replica."
+        },
+        {
+          "path": "frontend/src/pages/SearchResultsPage.tsx",
+          "operation": "modify",
+          "description": "Apply consistent results typography and spacing (title/link line/snippet hierarchy) using the shared theme; keep all visible text in English."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Add the provided generated images as static frontend assets and render them as the app logo (homepage and optionally results header).",
+      "acceptanceCriteria": [
+        "Generated images exist under frontend/public/assets/generated.",
+        "The homepage displays the generated logo image.",
+        "No image is served via the backend; images are loaded as static frontend assets."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/assets/generated/search-logo.dim_512x512.png",
+          "operation": "create",
+          "description": "Add the generated static logo asset at the exact required path: frontend/public/assets/generated/search-logo.dim_512x512.png."
+        },
+        {
+          "path": "frontend/public/assets/generated/search-logo-wide.dim_1200x300.png",
+          "operation": "create",
+          "description": "Add the generated wide logo asset at the exact required path: frontend/public/assets/generated/search-logo-wide.dim_1200x300.png."
+        },
+        {
+          "path": "frontend/src/pages/SearchHomePage.tsx",
+          "operation": "modify",
+          "description": "Render the generated logo image from frontend/public/assets/generated/search-logo-wide.dim_1200x300.png (or the square variant where appropriate) in the homepage UI as a static asset."
+        },
+        {
+          "path": "frontend/src/pages/SearchResultsPage.tsx",
+          "operation": "modify",
+          "description": "Optionally render a small generated logo in the results header using frontend/public/assets/generated/search-logo.dim_512x512.png (static asset) while keeping the layout clearly non-identical to Google."
+        }
+      ]
+    }
+  ]
+}

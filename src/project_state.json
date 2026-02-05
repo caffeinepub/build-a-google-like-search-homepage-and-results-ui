@@ -1,0 +1,77 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "Build a Google-like website (search homepage style).",
+  "existing_features": [
+    {
+      "id": "feature-create-a-google-inspired-search-homepage-ui-with-a-centered-logo-a-prominent-search-input-and-primary-secondary-action-buttons-e-g-search-and-i-m-feeling-lucky-using-only-original-branding-no-google-trademarks-fonts-or-logos",
+      "title": "Create a Google-inspired search homepage UI with a centered logo, a prominent search input, and primary/secondary action buttons (e.g., “Search” and “I’m Feeling Lucky”), using only original branding (no Google trademarks, fonts, or logos).",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-a-search-results-page-that-displays-a-list-of-results-for-the-entered-query-including-a-result-title-a-url-host-line-and-a-short-snippet-per-result-results-may-be-generated-from-a-local-mock-dataset-and-filtered-client-side",
+      "title": "Implement a search results page that displays a list of results for the entered query, including a result title, a URL/host line, and a short snippet per result; results may be generated from a local mock dataset and filtered client-side.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-basic-search-ux-behaviors-pressing-enter-triggers-search-the-search-box-supports-clearing-editing-and-the-query-is-reflected-in-the-url-so-results-can-be-refreshed-bookmarked",
+      "title": "Add basic search UX behaviors: pressing Enter triggers search, the search box supports clearing/editing, and the query is reflected in the URL so results can be refreshed/bookmarked.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-apply-a-coherent-visual-theme-across-the-app-colors-typography-spacing-button-styles-with-a-clean-minimalist-aesthetic-that-evokes-a-modern-search-engine-while-remaining-clearly-non-identical-to-google-s-visual-design-avoid-the-exact-google-color-palette-and-styling",
+      "title": "Apply a coherent visual theme across the app (colors, typography, spacing, button styles) with a clean minimalist aesthetic that evokes a modern search engine while remaining clearly non-identical to Google’s visual design (avoid the exact Google color palette and styling).",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-the-generated-static-images-to-the-frontend-as-assets-under-frontend-public-assets-generated-and-render-them-in-the-ui-logo-on-the-homepage-and-optionally-a-small-logo-in-the-results-header",
+      "title": "Add the generated static images to the frontend as assets under frontend/public/assets/generated and render them in the UI (logo on the homepage and optionally a small logo in the results header).",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Create a Google-like website (search homepage style).",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "architectural_notes": [],
+  "known_issues": [],
+  "isFixRequest": false,
+  "imageRequirements": "## Required Images\n- Minimalist abstract search logo mark with clean geometric shapes, neutral palette (search-logo.dim_512x512.png)\n- Wide horizontal version of the same logo/wordmark style with original text (not 'Google'), clean typography (search-logo-wide.dim_1200x300.png)",
+  "generatedImages": [
+    {
+      "filename": "search-logo.dim_512x512.png",
+      "description": "Minimalist abstract search logo mark with clean geometric shapes, neutral palette",
+      "targetWidth": 512,
+      "targetHeight": 512
+    },
+    {
+      "filename": "search-logo-wide.dim_1200x300.png",
+      "description": "Wide horizontal version of the same logo/wordmark style with original text (not 'Google'), clean typography",
+      "targetWidth": 1200,
+      "targetHeight": 300
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Build a Google-like search homepage and results UI",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

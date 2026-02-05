@@ -1,0 +1,116 @@
+{
+  "kind": "build_request",
+  "title": "Build a Google-like search homepage and results UI",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Create a Google-inspired search homepage UI with a centered logo, a prominent search input, and primary/secondary action buttons (e.g., “Search” and “I’m Feeling Lucky”), using only original branding (no Google trademarks, fonts, or logos).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Make me a google website"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The landing page renders a centered logo, search input, and two action buttons.",
+        "All branding is original (no use of the Google wordmark, multicolor logo, or proprietary fonts).",
+        "Layout is responsive for mobile and desktop."
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Implement a search results page that displays a list of results for the entered query, including a result title, a URL/host line, and a short snippet per result; results may be generated from a local mock dataset and filtered client-side.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Make me a google website"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Submitting a query navigates to a results view and shows a results list.",
+        "Each result shows a title, a URL/host line, and a snippet.",
+        "If no results match, an empty-state message is shown in English."
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Add basic search UX behaviors: pressing Enter triggers search, the search box supports clearing/editing, and the query is reflected in the URL so results can be refreshed/bookmarked.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Make me a google website"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Pressing Enter in the input triggers navigation to results.",
+        "The query appears in the URL (e.g., as a query string) and is restored on reload.",
+        "Users can edit the query on the results page and re-run the search."
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Apply a coherent visual theme across the app (colors, typography, spacing, button styles) with a clean minimalist aesthetic that evokes a modern search engine while remaining clearly non-identical to Google’s visual design (avoid the exact Google color palette and styling).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Make me a google website"
+        ]
+      },
+      "acceptanceCriteria": [
+        "All pages share consistent typography and component styling.",
+        "The theme is minimalist and search-centric but not an exact replica of Google’s design.",
+        "All user-facing text is in English."
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Add the generated static images to the frontend as assets under frontend/public/assets/generated and render them in the UI (logo on the homepage and optionally a small logo in the results header).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Make me a google website"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Generated images exist under frontend/public/assets/generated.",
+        "The homepage displays the generated logo image.",
+        "No image is served via the backend; images are loaded as static frontend assets."
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not use Google trademarks, the Google wordmark, or the official multicolor Google logo.",
+    "Do not integrate external search APIs (e.g., Google Search API) unless the user later provides an explicit endpoint and requirements.",
+    "All user-facing text must be in English.",
+    "Do not edit files under frontend/src/components/ui or other immutablePaths; compose them as-is."
+  ],
+  "nonGoals": [
+    "Implementing real web crawling or indexing",
+    "User accounts or authentication",
+    "Ads, analytics, or tracking",
+    "Real-time features (chat, websockets)"
+  ],
+  "imageRequirements": {
+    "required": [
+      "Minimalist abstract search logo mark with clean geometric shapes, neutral palette (search-logo.dim_512x512.png)",
+      "Wide horizontal version of the same logo/wordmark style with original text (not 'Google'), clean typography (search-logo-wide.dim_1200x300.png)"
+    ],
+    "edits": []
+  }
+}
