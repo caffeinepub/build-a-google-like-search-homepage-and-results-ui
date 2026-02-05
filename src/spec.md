@@ -1,13 +1,12 @@
 # Specification
 
 ## Summary
-**Goal:** Build a Google-inspired (but clearly original-branded) search homepage and a client-side mock search results UI with bookmarkable queries.
+**Goal:** Turn the existing app into a simple multi-page website experience with consistent navigation, layout, and styling.
 
 **Planned changes:**
-- Create a responsive landing page with a centered original logo image, prominent search input, and two action buttons (“Search” and “I’m Feeling Lucky”).
-- Implement a results page that lists matching items from a local mock dataset (title, URL/host line, snippet) with an English empty state when no matches are found.
-- Add basic search UX: Enter triggers search, query is reflected in the URL and restored on reload, and the query can be edited and re-submitted on the results page.
-- Apply a coherent minimalist theme (colors, typography, spacing, button styles) that evokes a modern search engine without copying Google’s palette/styling.
-- Add generated static images under `frontend/public/assets/generated` and render them in the UI (homepage logo; optional small logo in results header).
+- Add client-side routing with a persistent header navigation linking at minimum to Home and Search.
+- Create a website-style Home page with a hero section (headline + short description) and a primary CTA that routes into the existing Search flow.
+- Add a consistent footer across main pages with basic links (Home, Search) and a short copyright line.
+- Apply a single cohesive visual theme (typography, spacing, colors, and component styles) consistently across Home, Search Home, and Search Results, avoiding a blue/purple-dominant palette unless already present.
 
-**User-visible outcome:** Users can enter a query on a clean search homepage, run a search (via Enter or button), navigate to a results page showing mock results for that query, and refresh/bookmark/share the URL to restore the same results.
+**User-visible outcome:** Users can browse a Home page that explains the site, click a clear CTA to start searching, and navigate between Home and Search via a consistent header and footer on mobile and desktop without full page reloads.

@@ -1,155 +1,119 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Original search homepage and client-side results UI",
+  "title": "Multi-page website navigation + Home layout + consistent theme",
   "requirements": [
     {
       "id": "REQ-1",
-      "summary": "Create an original, Google-inspired (but non-identical) search landing page with centered logo, prominent search input, and primary/secondary actions.",
+      "summary": "Add persistent header navigation with client-side routing between Home and Search across mobile and desktop.",
       "acceptanceCriteria": [
-        "The landing page renders a centered logo, search input, and two action buttons.",
-        "All branding is original (no use of the Google wordmark, multicolor logo, or proprietary fonts).",
-        "Layout is responsive for mobile and desktop."
+        "A persistent header navigation is visible on all pages.",
+        "Users can navigate to Home and Search using the header without full page reloads.",
+        "Navigation works on mobile and desktop layouts."
       ],
       "file_operations": [
         {
+          "path": "frontend/src/components/SiteHeader.tsx",
+          "operation": "create",
+          "description": "Create a responsive, persistent site header with navigation links to Home and Search using TanStack Router navigation primitives and shadcn-ui Button styling where appropriate. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/layouts/SiteLayout.tsx",
+          "operation": "create",
+          "description": "Create a shared layout that renders SiteHeader above an Outlet/content area so navigation remains consistent across routes."
+        },
+        {
           "path": "frontend/src/App.tsx",
-          "operation": "create",
-          "description": "Create the app shell with route wiring so the landing page is the default route (e.g., \"/\")."
-        },
-        {
-          "path": "frontend/src/pages/SearchHomePage.tsx",
-          "operation": "create",
-          "description": "Implement the search landing page layout: centered generated logo, prominent search input, and two action buttons with original brand styling and English-only text."
-        },
-        {
-          "path": "frontend/src/components/SearchForm.tsx",
-          "operation": "create",
-          "description": "Create a reusable search form component used on the homepage (and later on results) with a prominent input and primary/secondary actions. Use shadcn-ui components (e.g., Button/Input) to keep styling consistent; verify the component's usage instructions before implementing."
-        },
-        {
-          "path": "frontend/src/main.tsx",
           "operation": "modify",
-          "description": "Wire the new App component entry (and ensure the global CSS import resolves correctly) so the homepage renders as the default view."
+          "description": "Refactor TanStack Router setup so the root route renders SiteLayout and child routes render their pages, enabling persistent header navigation without full page reloads. Update routes to ensure distinct Home and Search entry pages are reachable from the header."
         }
       ]
     },
     {
       "id": "REQ-2",
-      "summary": "Implement a results page that lists mock-search matches with title, host/URL line, and snippet plus an English empty state.",
+      "summary": "Create a website-style Home page with a hero section and a primary CTA that routes into the existing Search experience.",
       "acceptanceCriteria": [
-        "Submitting a query navigates to a results view and shows a results list.",
-        "Each result shows a title, a URL/host line, and a snippet.",
-        "If no results match, an empty-state message is shown in English."
+        "Home page contains at least: a hero section (headline + short description) and a primary CTA that routes into the Search flow.",
+        "Layout is responsive and readable on narrow screens.",
+        "No broken links or placeholder lorem ipsum text remain."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/pages/SearchResultsPage.tsx",
+          "path": "frontend/src/pages/HomePage.tsx",
           "operation": "create",
-          "description": "Create a results view that reads the query from the URL, filters a local mock dataset client-side, and renders a results list with title, URL/host line, and snippet plus an English empty state."
-        },
-        {
-          "path": "frontend/src/mock/searchDataset.ts",
-          "operation": "create",
-          "description": "Add a local mock dataset of searchable items (title, url/host, snippet, keywords) used by the results page filtering logic; no external search APIs."
-        },
-        {
-          "path": "frontend/src/components/ResultsList.tsx",
-          "operation": "create",
-          "description": "Create a presentational component to render the results list and empty-state message. Use shadcn-ui primitives where appropriate (e.g., Card/Separator/Typography classes) without modifying immutable ui files; verify the component's usage instructions before implementing."
+          "description": "Implement a Home page with a hero (headline + concise description) and a primary CTA button that navigates to the Search Home page using TanStack Router navigation. Use shadcn-ui Button for consistent CTA styling. Verify the component's usage instructions before implementing."
         },
         {
           "path": "frontend/src/App.tsx",
           "operation": "modify",
-          "description": "Register and wire navigation to the results route (e.g., \"/search\") so the results page is reachable after submitting a query."
+          "description": "Wire the new HomePage into the router as the '/' route, and move the existing search home experience to a dedicated Search route so the Home CTA can route into the Search flow."
         }
       ]
     },
     {
       "id": "REQ-3",
-      "summary": "Add core search UX: Enter-to-search, editable/clearable query, and query persisted in the URL for refresh/bookmark.",
+      "summary": "Add a consistent footer across main pages with basic site links and a copyright line.",
       "acceptanceCriteria": [
-        "Pressing Enter in the input triggers navigation to results.",
-        "The query appears in the URL (e.g., as a query string) and is restored on reload.",
-        "Users can edit the query on the results page and re-run the search."
+        "Footer is present across the main pages.",
+        "Footer links navigate correctly.",
+        "Footer styling matches the rest of the site and works in both light and dark mode (if supported by the existing theme)."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/components/SearchForm.tsx",
+          "path": "frontend/src/components/SiteFooter.tsx",
+          "operation": "create",
+          "description": "Create a site footer containing links to Home and Search plus a short copyright line, using theme tokens for light/dark compatibility."
+        },
+        {
+          "path": "frontend/src/layouts/SiteLayout.tsx",
           "operation": "modify",
-          "description": "Implement form semantics so Enter submits; add clear/edit support (e.g., a clear control) and emit navigation-friendly submit events. Use shadcn-ui Button/Input if used; verify the component's usage instructions before implementing."
+          "description": "Render SiteFooter beneath the main content so it appears across the Home, Search Home, and Search Results pages."
         },
         {
           "path": "frontend/src/pages/SearchHomePage.tsx",
           "operation": "modify",
-          "description": "On submit, navigate to the results route while encoding the query in the URL (query string) so it can be bookmarked/refreshed."
+          "description": "Remove page-local footer markup (now handled by SiteLayout) and ensure its internal navigation continues to route into the Search Results flow after route changes."
         },
         {
           "path": "frontend/src/pages/SearchResultsPage.tsx",
           "operation": "modify",
-          "description": "Read the query from the URL on mount/load, populate the search box from it, allow editing, and update the URL when re-running the search (keeping refresh/bookmark behavior)."
+          "description": "Remove page-local footer markup (now handled by SiteLayout) and keep the results page focused on search header+results content."
         }
       ]
     },
     {
       "id": "REQ-4",
-      "summary": "Apply a cohesive minimalist visual theme across the app that feels search-centric but is clearly not a Google replica; ensure English-only UI text.",
+      "summary": "Apply a coherent site-wide visual theme and consistent styling across Home, Search Home, and Search Results without a blue/purple-dominant palette.",
       "acceptanceCriteria": [
-        "All pages share consistent typography and component styling.",
-        "The theme is minimalist and search-centric but not an exact replica of Google’s design.",
-        "All user-facing text is in English."
+        "Home, Search Home, and Search Results share consistent typography and spacing scale.",
+        "Buttons, inputs, and links have consistent styling and hover/focus states.",
+        "The theme does not use a blue/purple dominant palette unless already present in the current design tokens."
       ],
       "file_operations": [
         {
-          "path": "frontend/index.css",
+          "path": "frontend/src/index.css",
           "operation": "modify",
-          "description": "Adjust global CSS variables (colors, radius, base text rendering) to create an original minimalist theme that avoids the exact Google palette while remaining clean and search-centric."
+          "description": "Adjust global theme tokens (e.g., primary/ring hues) away from a blue/purple-dominant palette while preserving light/dark support, and add minimal base styling for consistent typography/links/focus across pages."
         },
         {
-          "path": "frontend/tailwind.config.js",
+          "path": "frontend/src/components/SiteHeader.tsx",
           "operation": "modify",
-          "description": "Refine Tailwind theme extensions (e.g., font stack, spacing/radius conventions) to ensure consistent typography and component styling across pages without mimicking Google’s proprietary look."
+          "description": "Ensure header navigation visual states (active/hover/focus) align with the updated theme tokens and remain usable on mobile and desktop."
+        },
+        {
+          "path": "frontend/src/pages/HomePage.tsx",
+          "operation": "modify",
+          "description": "Align Home hero spacing, typography, and CTA styling with the shared theme (use shadcn-ui Button for primary action; avoid custom one-off styles). Verify the component's usage instructions before implementing."
         },
         {
           "path": "frontend/src/pages/SearchHomePage.tsx",
           "operation": "modify",
-          "description": "Apply consistent page-level spacing, typography, and button/input styling using the shared theme; keep all visible text in English and ensure the design is not an exact Google replica."
+          "description": "Update layout spacing/typography so the Search Home page matches the same website styling (container widths, vertical rhythm) as Home and Search Results, while continuing to use the existing SearchForm (which composes shadcn-ui Input/Button). Verify the component's usage instructions before implementing."
         },
         {
           "path": "frontend/src/pages/SearchResultsPage.tsx",
           "operation": "modify",
-          "description": "Apply consistent results typography and spacing (title/link line/snippet hierarchy) using the shared theme; keep all visible text in English."
-        }
-      ]
-    },
-    {
-      "id": "REQ-5",
-      "summary": "Add the provided generated images as static frontend assets and render them as the app logo (homepage and optionally results header).",
-      "acceptanceCriteria": [
-        "Generated images exist under frontend/public/assets/generated.",
-        "The homepage displays the generated logo image.",
-        "No image is served via the backend; images are loaded as static frontend assets."
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/public/assets/generated/search-logo.dim_512x512.png",
-          "operation": "create",
-          "description": "Add the generated static logo asset at the exact required path: frontend/public/assets/generated/search-logo.dim_512x512.png."
-        },
-        {
-          "path": "frontend/public/assets/generated/search-logo-wide.dim_1200x300.png",
-          "operation": "create",
-          "description": "Add the generated wide logo asset at the exact required path: frontend/public/assets/generated/search-logo-wide.dim_1200x300.png."
-        },
-        {
-          "path": "frontend/src/pages/SearchHomePage.tsx",
-          "operation": "modify",
-          "description": "Render the generated logo image from frontend/public/assets/generated/search-logo-wide.dim_1200x300.png (or the square variant where appropriate) in the homepage UI as a static asset."
-        },
-        {
-          "path": "frontend/src/pages/SearchResultsPage.tsx",
-          "operation": "modify",
-          "description": "Optionally render a small generated logo in the results header using frontend/public/assets/generated/search-logo.dim_512x512.png (static asset) while keeping the layout clearly non-identical to Google."
+          "description": "Update container/spacing/typography for consistency with Home and Search Home, ensuring SearchForm and ResultsList presentation matches the site-wide theme (including hover/focus states). Verify the component's usage instructions before implementing."
         }
       ]
     }

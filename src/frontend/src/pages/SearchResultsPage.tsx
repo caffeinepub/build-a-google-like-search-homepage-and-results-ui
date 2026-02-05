@@ -40,19 +40,19 @@ export default function SearchResultsPage() {
 
   const handleSearch = (searchQuery: string) => {
     if (searchQuery.trim()) {
-      navigate({ to: '/search', search: { q: searchQuery } });
+      navigate({ to: '/search/results', search: { q: searchQuery } });
     }
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-background">
-      {/* Header with search */}
-      <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
+    <div className="flex flex-col min-h-[calc(100vh-8rem)]">
+      {/* Search header */}
+      <div className="sticky top-[57px] z-40 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center gap-6">
             {/* Small logo */}
             <button
-              onClick={() => navigate({ to: '/' })}
+              onClick={() => navigate({ to: '/search' })}
               className="flex-shrink-0 hover:opacity-80 transition-opacity"
             >
               <img
@@ -73,29 +73,14 @@ export default function SearchResultsPage() {
             </div>
           </div>
         </div>
-      </header>
+      </div>
 
       {/* Results */}
-      <main className="flex-1 container mx-auto px-4 py-6">
+      <div className="flex-1 container mx-auto px-4 py-6">
         <div className="max-w-3xl">
           <ResultsList results={results} query={query} />
         </div>
-      </main>
-
-      {/* Footer */}
-      <footer className="border-t border-border bg-muted/30 py-4 px-6 mt-auto">
-        <div className="container mx-auto flex flex-col sm:flex-row items-center justify-center gap-2 text-sm text-muted-foreground">
-          <span>© 2026. Built with ❤️ using</span>
-          <a
-            href="https://caffeine.ai"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-foreground hover:underline font-medium"
-          >
-            caffeine.ai
-          </a>
-        </div>
-      </footer>
+      </div>
     </div>
   );
 }

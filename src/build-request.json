@@ -1,116 +1,93 @@
 {
   "kind": "build_request",
-  "title": "Build a Google-like search homepage and results UI",
+  "title": "Turn the app into a simple multi-page website experience",
   "priority": "normal",
   "requirements": [
     {
       "id": "REQ-1",
-      "text": "Create a Google-inspired search homepage UI with a centered logo, a prominent search input, and primary/secondary action buttons (e.g., “Search” and “I’m Feeling Lucky”), using only original branding (no Google trademarks, fonts, or logos).",
+      "text": "Add basic website navigation so users can move between primary pages from a consistent header (at minimum: Home and Search).",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-2"
+          "msg-6"
         ],
         "quotes": [
-          "Make me a google website"
+          "Make me a website"
         ]
       },
       "acceptanceCriteria": [
-        "The landing page renders a centered logo, search input, and two action buttons.",
-        "All branding is original (no use of the Google wordmark, multicolor logo, or proprietary fonts).",
-        "Layout is responsive for mobile and desktop."
+        "A persistent header navigation is visible on all pages.",
+        "Users can navigate to Home and Search using the header without full page reloads.",
+        "Navigation works on mobile and desktop layouts."
       ]
     },
     {
       "id": "REQ-2",
-      "text": "Implement a search results page that displays a list of results for the entered query, including a result title, a URL/host line, and a short snippet per result; results may be generated from a local mock dataset and filtered client-side.",
+      "text": "Create a website-style Home page layout that clearly explains what the site is and provides a primary call-to-action to use the existing search experience.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-2"
+          "msg-6"
         ],
         "quotes": [
-          "Make me a google website"
+          "Make me a website"
         ]
       },
       "acceptanceCriteria": [
-        "Submitting a query navigates to a results view and shows a results list.",
-        "Each result shows a title, a URL/host line, and a snippet.",
-        "If no results match, an empty-state message is shown in English."
+        "Home page contains at least: a hero section (headline + short description) and a primary CTA that routes into the Search flow.",
+        "Layout is responsive and readable on narrow screens.",
+        "No broken links or placeholder lorem ipsum text remain."
       ]
     },
     {
       "id": "REQ-3",
-      "text": "Add basic search UX behaviors: pressing Enter triggers search, the search box supports clearing/editing, and the query is reflected in the URL so results can be refreshed/bookmarked.",
+      "text": "Add a consistent website footer with basic site links (e.g., Home, Search) and a short copyright line.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-2"
+          "msg-6"
         ],
         "quotes": [
-          "Make me a google website"
+          "Make me a website"
         ]
       },
       "acceptanceCriteria": [
-        "Pressing Enter in the input triggers navigation to results.",
-        "The query appears in the URL (e.g., as a query string) and is restored on reload.",
-        "Users can edit the query on the results page and re-run the search."
+        "Footer is present across the main pages.",
+        "Footer links navigate correctly.",
+        "Footer styling matches the rest of the site and works in both light and dark mode (if supported by the existing theme)."
       ]
     },
     {
       "id": "REQ-4",
-      "text": "Apply a coherent visual theme across the app (colors, typography, spacing, button styles) with a clean minimalist aesthetic that evokes a modern search engine while remaining clearly non-identical to Google’s visual design (avoid the exact Google color palette and styling).",
+      "text": "Apply a single, coherent visual theme across the website (colors, typography, spacing, and component styling) with a distinct style that is used consistently on Home, Search Home, and Search Results pages.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-2"
+          "msg-6"
         ],
         "quotes": [
-          "Make me a google website"
+          "Make me a website"
         ]
       },
       "acceptanceCriteria": [
-        "All pages share consistent typography and component styling.",
-        "The theme is minimalist and search-centric but not an exact replica of Google’s design.",
-        "All user-facing text is in English."
-      ]
-    },
-    {
-      "id": "REQ-5",
-      "text": "Add the generated static images to the frontend as assets under frontend/public/assets/generated and render them in the UI (logo on the homepage and optionally a small logo in the results header).",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-2"
-        ],
-        "quotes": [
-          "Make me a google website"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Generated images exist under frontend/public/assets/generated.",
-        "The homepage displays the generated logo image.",
-        "No image is served via the backend; images are loaded as static frontend assets."
+        "Home, Search Home, and Search Results share consistent typography and spacing scale.",
+        "Buttons, inputs, and links have consistent styling and hover/focus states.",
+        "The theme does not use a blue/purple dominant palette unless already present in the current design tokens."
       ]
     }
   ],
   "constraints": [
-    "Do not use Google trademarks, the Google wordmark, or the official multicolor Google logo.",
-    "Do not integrate external search APIs (e.g., Google Search API) unless the user later provides an explicit endpoint and requirements.",
-    "All user-facing text must be in English.",
-    "Do not edit files under frontend/src/components/ui or other immutablePaths; compose them as-is."
+    "Do not edit files under frontend/src/components/ui (read-only shadcn components); compose them instead.",
+    "Do not modify files listed in frontend.immutablePaths; implement changes using other components/pages.",
+    "Backend remains a single Motoko actor; do not introduce additional backend services."
   ],
   "nonGoals": [
-    "Implementing real web crawling or indexing",
-    "User accounts or authentication",
-    "Ads, analytics, or tracking",
-    "Real-time features (chat, websockets)"
+    "Do not add third-party authentication providers beyond Internet Identity.",
+    "Do not add real-time features (WebSockets/push notifications).",
+    "Do not introduce external databases or non-Motoko backend services."
   ],
   "imageRequirements": {
-    "required": [
-      "Minimalist abstract search logo mark with clean geometric shapes, neutral palette (search-logo.dim_512x512.png)",
-      "Wide horizontal version of the same logo/wordmark style with original text (not 'Google'), clean typography (search-logo-wide.dim_1200x300.png)"
-    ],
+    "required": [],
     "edits": []
   }
 }

@@ -1,24 +1,32 @@
-import { RouterProvider, createRouter, createRoute, createRootRoute } from '@tanstack/react-router';
+import { RouterProvider, createRouter, createRoute, createRootRoute, Outlet } from '@tanstack/react-router';
+import SiteLayout from './layouts/SiteLayout';
+import HomePage from './pages/HomePage';
 import SearchHomePage from './pages/SearchHomePage';
 import SearchResultsPage from './pages/SearchResultsPage';
 
 const rootRoute = createRootRoute({
-  component: () => <RouterProvider router={router} />
+  component: SiteLayout
 });
 
 const indexRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/',
+  component: HomePage
+});
+
+const searchHomeRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/search',
   component: SearchHomePage
 });
 
-const searchRoute = createRoute({
+const searchResultsRoute = createRoute({
   getParentRoute: () => rootRoute,
-  path: '/search',
+  path: '/search/results',
   component: SearchResultsPage
 });
 
-const routeTree = rootRoute.addChildren([indexRoute, searchRoute]);
+const routeTree = rootRoute.addChildren([indexRoute, searchHomeRoute, searchResultsRoute]);
 
 const router = createRouter({ routeTree });
 
